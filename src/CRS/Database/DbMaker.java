@@ -5,6 +5,9 @@
  */
 package CRS.Database;
 
+import CRS.AppLogic.Student;
+import java.util.List;
+
 /**
  *
  * @author aashgar
@@ -12,8 +15,10 @@ package CRS.Database;
 public class DbMaker {
     private static DbMaker aDbMaker;
     private DbUser aDbUser;
+    private DbStudent aDbStudent;
     private DbMaker(){
         aDbUser = new DbUser();
+        aDbStudent = new DbStudent();
     }
     public static DbMaker getDbMaker(){
         if(aDbMaker == null)
@@ -23,5 +28,11 @@ public class DbMaker {
     public boolean verifyUserDbMaker(String userName,
             String password){
         return aDbUser.verifyUser(userName, password);
+    }
+    public void addStudentDbMaker(Student asStudent){
+        aDbStudent.addStudent(asStudent);
+    }
+    public List<Student> getStudentsDbMaker(){
+        return aDbStudent.getStudents();
     }
 }
